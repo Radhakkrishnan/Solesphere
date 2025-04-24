@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../api";
 import { motion } from "framer-motion";
+import Search from "../Components/Search";
+import Filter from "../Components/Filter";
 const BASE_URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ShopPage() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all")
+
   const productsPerPage = 6;
 
   useEffect(() => {
@@ -17,26 +23,44 @@ export default function ShopPage() {
     loadAllProducts();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+  
+
+  const filteredProducts = products.filter((product) =>{
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === 'all' || product.category.toLowerCase() === selectedCategory;
+    return matchesCategory && matchesSearch
+  })
+
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
+  const currentFilteredProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
 
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   return (
-    <div className="pt-28 px-8 bg-gray ">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  bg-[#f9f9f9] ">
-        {currentProducts.map((product) => {
+    <div className="pt-24 px-8 bg-[#e6e6e6] min-h-screen">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+        <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <Filter
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6  ">
+        {currentFilteredProducts.map((product) => {
           return (
             <motion.div
               key={product._id}
-              inital={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-500 ease-in-out"
+              className="bg-[#f5f5f7] rounded-2xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-500 ease-in-out"
             >
               <div className="relative">
                 <img
@@ -44,7 +68,7 @@ export default function ShopPage() {
                   alt={product.name}
                   className="w-full h-60 object-cover"
                 />
-                <div className="absolute top-2 left-2 bg-black text-white text-xs p-1 rounded">
+                <div className="absolute top-2 left-2 bg-[#e6e6e6] text-black text-xs px-2 py-1 rounded-lg">
                   # {product.tag}
                 </div>
               </div>
@@ -64,6 +88,11 @@ export default function ShopPage() {
             </motion.div>
           );
         })}
+        {currentFilteredProducts.length === 0 && (
+          <div className="col-span-full text-center text-gray-500 text-xl py-16">
+            No products found.
+          </div>
+        )}
       </div>
       <div className="flex justify-center mt-8 space-x-2">
         {Array.from({ length: totalPages }, (_, i) => (
