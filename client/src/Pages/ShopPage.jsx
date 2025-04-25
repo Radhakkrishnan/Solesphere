@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../api";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Search from "../Components/Search";
 import Filter from "../Components/Filter";
+import AddToCartBtn from "../Components/AddToCartBtn";
 const BASE_URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ShopPage() {
@@ -17,7 +19,6 @@ export default function ShopPage() {
   useEffect(() => {
     const loadAllProducts = async () => {
       let response = await getProducts();
-      console.log(response.allProducts);
       setProducts(response.allProducts);
     };
     loadAllProducts();
@@ -62,6 +63,7 @@ export default function ShopPage() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-[#f5f5f7] rounded-2xl shadow-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-500 ease-in-out"
             >
+              <Link to={`/product/${product._id}`}>
               <div className="relative">
                 <img
                   src={`${BASE_URL}${product.image}`}
@@ -81,10 +83,9 @@ export default function ShopPage() {
                   ₹{product.price}
                 </p>
                 <p className="text-sm text-gray-400">Stock: {product.stock}</p>
-                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-[#1d1d1f] to-[#434343] text-white rounded-xl transition-all hover:opacity-90 hover:scale-[1.02]">
-                  Add to Cart
-                </button>
+                <AddToCartBtn/>
               </div>
+              </Link>
             </motion.div>
           );
         })}

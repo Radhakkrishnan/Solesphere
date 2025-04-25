@@ -12,3 +12,14 @@ export const getProducts = async() => {
     }
 }
 
+export const getOneProduct = async(id) => {
+    try{
+        let response = await axios.get(`${BASE_URL}/product/${id}`)
+        return response.data
+        
+    }
+    catch(err){
+        console.log(err)
+        throw err
+    }
+}
