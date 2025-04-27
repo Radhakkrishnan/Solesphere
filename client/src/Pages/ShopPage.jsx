@@ -83,7 +83,7 @@ export default function ShopPage() {
                   ₹{product.price}
                 </p>
                 <p className="text-sm text-gray-400">Stock: {product.stock}</p>
-                <AddToCartBtn/>
+                <AddToCartBtn product={product}/>
               </div>
               </Link>
             </motion.div>

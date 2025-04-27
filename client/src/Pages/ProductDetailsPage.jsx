@@ -76,7 +76,7 @@ export default function ProductDetailsPage(){
                         <p className="text-[#1d1d1f] font-bold text-2xl mt-4">₹{product.price}</p>
                         <p className="text-sm text-gray-500 mt-1">Stock: {product.stock}</p>
                     </div>
-                    <AddToCartBtn/>
+                    <AddToCartBtn product={product}/>
                 </div>
             </motion.div>
 
