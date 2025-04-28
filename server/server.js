@@ -4,6 +4,7 @@ const express = require("express")
 const path = require('path')
 const cors = require("cors")
 const productRoute = require("../server/src/routes/productRoute")
+const userRoutes = require("../server/src/routes/userRoutes")
 
 
 const app = express()
@@ -12,6 +13,7 @@ app.use("/image", express.static(path.join(__dirname,'images')))
 app.use(express.json())
 app.use(cors())
 app.use(productRoute)
+app.use(userRoutes)
 
 const PORT = process.env.PORT || 5000
 connect()

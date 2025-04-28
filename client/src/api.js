@@ -23,3 +23,46 @@ export const getOneProduct = async(id) => {
         throw err
     }
 }
+
+export const registerUser = async(user) => {
+    try{
+        let response = await axios.post(`${BASE_URL}/register`, user)
+        console.log(user)
+        return response.data
+    } catch(err){
+        console.log(err)
+        throw err
+    }
+}
+
+export const loginUser = async(user) => {
+    try{
+        let response = await axios.post(`${BASE_URL}/login`, user)
+        return response.data
+    } catch(err){
+        console.log(err)
+        throw err
+    }
+} 
+
+export const getUsers = async() => {
+    try{
+        const response = await axios.get(`${BASE_URL}/getUsers`)
+        return response.data
+    }
+    catch(err){
+        console.log(err)
+        throw err
+    }
+}
+
+export const getUser =async(id) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/getUser/${id}`)
+        return response.data
+    }
+    catch(err){
+        console.log(err)
+        throw err
+    }
+}

@@ -11,5 +11,17 @@ export const pages = [
         name:'Contact',
         path:"/contact"
     },
+    {
+        name:"Login",
+        path:"/login"
+    },
+    {
+        name:"Profile",
+        path:"/profile"
+    },
+    {
+        name:"Admin",
+        path:"/admin"
+    }
 
 ]
