@@ -66,3 +66,32 @@ export const getUser =async(id) => {
         throw err
     }
 }
+
+export const placeOrder = async(order,token) => {
+    try{
+        const response = await axios.post(`${BASE_URL}/postOrder`,order,{
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
+        return response
+    } catch(err){
+        console.log(err)
+        throw err
+    }
+}
+
+export const getOrders = async(token) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/myOrders`,{
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        })
+        return response.data
+    }
+    catch(err){
+        console.log(err)
+        throw err
+    }
+}

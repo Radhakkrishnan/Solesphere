@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { motion } from "framer-motion"
 import { UserCircleIcon } from "lucide-react"; 
+import BackBtn from "../Components/BackBtn";
 
 
 export default function UserPage(){
@@ -20,7 +21,8 @@ export default function UserPage(){
     },[id])
     return(
         <div className="min-h-screen pt-24 px-8  bg-[#e6e6e6]">
-           <div className="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-2xl">   
+           <div className="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-2xl">
+            <BackBtn/>   
                 <motion.div
                     initial={{opacity:0, y:30}}
                     animate={{opacity:1, y:0}}

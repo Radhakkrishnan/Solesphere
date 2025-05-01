@@ -1,7 +1,8 @@
 import { loginUser } from "../api"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import {Link, useNavigate} from 'react-router-dom'
 import toast from "react-hot-toast"
+import LoginBtn from "../Components/LoginBtn"
 
 
 
@@ -13,14 +14,26 @@ export default function LoginPage(){
             password : " "
         }
     )
+    const toastShown = useRef(false)
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if(token && !toastShown.current){
+            toast.error("You are already logged in.Logout first to switch accounts.")
+            toastShown.current = true
+            navigate("/")
+        }
+    },[])
     const handleChange = (e) => {
         setUser({...user, [e.target.name] : e.target.value})
     }
    
     const handleLogin = async(e) => {
         e.preventDefault()
+
+
         try{
             const data = await loginUser(user)
+            localStorage.setItem("token",data.token)
             localStorage.setItem("userInfo", JSON.stringify(data.User))
             toast.success("Login succesful")
             navigate("/")
@@ -51,14 +64,9 @@ export default function LoginPage(){
                     required
                 />
 
-                <button
-                    type="submit"
-                    className="w-full mt-4 py-2 px-4 bg-gradient-to-r from-[#1d1d1f] to-[#434343] text-white rounded-xl transition-all from-[#1d1d1f] to-[#434343] text-white hover:scale-[1.02]"
-                >
-                    Login
-                </button>
+                <LoginBtn/>
 
-               <div className="flex justify-center">
+               <div className="flex justify-center mt-2">
                <Link to="/register">Register</Link>
                </div>
             </form>

@@ -32,7 +32,7 @@ export default function AdminPage(){
                             >
                                  <UserCircleIcon className="w-10 h-10 text-gray-600" />
                                 <div className="flex-1">
-                                   <Link to={`/getUser/${user._id}`} className="text-xl font-semibold text-gray-700 hover:text-black">
+                                   <Link to={`/getUser/${user._id}`} className="text-lg font-semibold text-gray-700 hover:text-black">
                                         {user.name}
                                    </Link>
                                 </div>

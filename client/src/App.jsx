@@ -13,6 +13,8 @@ import ProfilePage from "./Pages/ProfilePage";
 import AdminPage from "./Pages/AdminPage";
 import UserPage from "./Pages/UserPage";
 import OrderConfirmationPage from "./Pages/OrderConfirmationPage";
+import AdminRoute from "./Services.jsx/AdminRoute";
+import OrderHistory from "./Pages/OrderHistoryPage";
 
 function App() {
   return (
@@ -30,8 +32,9 @@ function App() {
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
-            <Route path="/admin" element={<AdminPage/>}/>
+            <Route path="/admin" element={<AdminRoute><AdminPage/></AdminRoute>}/>
             <Route path="/getUser/:id" element={<UserPage/>}/>
+            <Route path="/myOrders" element={<OrderHistory/>}/>
           </Route>
         </Routes>
       </Router>

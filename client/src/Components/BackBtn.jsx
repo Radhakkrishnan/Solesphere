@@ -6,7 +6,7 @@ export default function BackBtn(){
     return(
         <button 
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#1d1d1f] to-[#434343] text-white font-medium shadow-md hover:opacity-90 hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#2C2C2E] to-[#3A3A3C] text-[#F5F5F7] font-semibold shadow-sm hover:shadow-md hover:opacity-95 transition-transform transform hover:scale-105 duration-200"
         >
             Back
         </button>
