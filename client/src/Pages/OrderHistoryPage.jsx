@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getOrders } from "../api";
+import { getOrders } from "../Services/api";
 
 export default function OrderHistory() {
   const [orders, setOrders] = useState([]);
@@ -17,7 +17,7 @@ export default function OrderHistory() {
     <div className="min-h-screen pt-24 px-8 bg-[#e6e6e6]">
       <div className="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-2xl">
         <h1 className="text-3xl font-semibold mb-4">Order History</h1>
-        {orders.lenght == 0 ? (
+        {orders.length == 0 ? (
           <p className="text-center text-gray-500 text-lg">
             You have no orders yet.
           </p>

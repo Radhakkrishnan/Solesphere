@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { registerUser } from "../api"
+import { registerUser } from "../Services/api"
 import toast from "react-hot-toast"
 import RegisterBtn from "../Components/RegisterBtn"
 

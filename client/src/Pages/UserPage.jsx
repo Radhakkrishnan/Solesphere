@@ -1,4 +1,4 @@
-import { getUser } from "../api"
+import { getUser } from "../Services/api"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { motion } from "framer-motion"

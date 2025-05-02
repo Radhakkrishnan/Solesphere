@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getUsers } from "../api"
+import { getUsers } from "../Services/api"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { UserCircleIcon } from "lucide-react"; 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
-import { placeOrder } from "../api";
+import { placeOrder } from "../Services/api";
 import toast from "react-hot-toast";
 
 export default function CheckoutPage(){

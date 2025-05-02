@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { getOneProduct, getProducts } from "../api"
+import { getOneProduct, getProducts } from "../Services/api"
 import { motion } from "framer-motion"
 import BackBtn from "../Components/BackBtn"
 import AddToCartBtn from "../Components/AddToCartBtn"
