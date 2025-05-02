@@ -8,7 +8,7 @@ export default function LandingPage() {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.9 }}
           className="text-center md:text-left max-w-xl"
         >
           <h1 className="text-5xl md:text-6xl font-semibold mb-6 tracking-tight leading-tight">
@@ -24,7 +24,7 @@ export default function LandingPage() {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.9 }}
           className="w-full md:w-1/2"
         >
           <img
