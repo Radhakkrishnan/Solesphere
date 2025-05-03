@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Layout from "./Components/layout";
+import Layout from "./Components/Layout";
 import LandingPage from "./Pages/LandingPage";
 import ShopPage from "./Pages/ShopPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage";
