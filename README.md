@@ -25,5 +25,15 @@ SoleSphere is a full-stack e-commerce web application for premium footwear. Buil
 
 ---
 
+## 📸 Screenshots
+
+
+![Homepage](screenshots/Homepage.png)
+![Product Page](./screenshots/productpage.png)
+
+---
+
+
+
 
 
